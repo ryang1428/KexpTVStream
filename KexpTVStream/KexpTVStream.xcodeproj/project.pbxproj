@@ -13,6 +13,9 @@
 		46CDFB2A1C30A7180001A004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46CDFB291C30A7180001A004 /* Assets.xcassets */; };
 		46CDFB351C30A7180001A004 /* KexpTVStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB341C30A7180001A004 /* KexpTVStreamTests.swift */; };
 		46CDFB401C30A7630001A004 /* KexpNowPlayingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB3F1C30A7630001A004 /* KexpNowPlayingVC.swift */; };
+		46CDFB451C30A8AD0001A004 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB421C30A8AD0001A004 /* AudioManager.swift */; };
+		46CDFB461C30A8AD0001A004 /* KexpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB431C30A8AD0001A004 /* KexpController.swift */; };
+		46CDFB471C30A8AD0001A004 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB441C30A8AD0001A004 /* NowPlaying.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		46CDFB341C30A7180001A004 /* KexpTVStreamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KexpTVStreamTests.swift; sourceTree = "<group>"; };
 		46CDFB361C30A7180001A004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46CDFB3F1C30A7630001A004 /* KexpNowPlayingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KexpNowPlayingVC.swift; sourceTree = "<group>"; };
+		46CDFB421C30A8AD0001A004 /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		46CDFB431C30A8AD0001A004 /* KexpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KexpController.swift; sourceTree = "<group>"; };
+		46CDFB441C30A8AD0001A004 /* NowPlaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				46CDFB1F1C30A7170001A004 /* AppDelegate.swift */,
+				46CDFB421C30A8AD0001A004 /* AudioManager.swift */,
+				46CDFB431C30A8AD0001A004 /* KexpController.swift */,
+				46CDFB441C30A8AD0001A004 /* NowPlaying.swift */,
 				46CDFB3F1C30A7630001A004 /* KexpNowPlayingVC.swift */,
 				46CDFB411C30A7730001A004 /* Supporting files */,
 			);
@@ -204,9 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46CDFB461C30A8AD0001A004 /* KexpController.swift in Sources */,
 				46CDFB201C30A7170001A004 /* AppDelegate.swift in Sources */,
 				46CDFB401C30A7630001A004 /* KexpNowPlayingVC.swift in Sources */,
+				46CDFB451C30A8AD0001A004 /* AudioManager.swift in Sources */,
 				46CDFB251C30A7170001A004 /* KexpTVStream.xcdatamodeld in Sources */,
+				46CDFB471C30A8AD0001A004 /* NowPlaying.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
