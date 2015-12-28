@@ -13,13 +13,15 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
 
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var kexpLogo: UIImageView!
+
+    @IBOutlet var artistLabel: UILabel!
+    @IBOutlet var trackLabel: UILabel!
+    @IBOutlet var albumLabel: UILabel!
+
     @IBOutlet var artistNameLabel: UILabel!
     @IBOutlet var trackNameLabel: UILabel!
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var albumArtworkView: UIImageView!
-    
-    var timer: NSTimer?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,9 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: "playKexpAction:")
         tapRecognizer.allowedPressTypes = [NSNumber(integer: UIPressType.PlayPause.rawValue)];
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        getNowPlayingInfo()
+        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
     }
 
     private func updateAlbumArtWork(albumArtUrl: String) {
@@ -44,27 +49,39 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
     // MARK: - KexpAudioManagerDelegate Methods
     func KexpAudioPlayerDidStartPlaying() {
         getNowPlayingInfo()
-        
-        if (timer == nil) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
-        }
     }
     
     func KexpAudioPlayerDidStopPlaying() {
-        timer?.invalidate()
-        timer = nil
         setPlayMode(false)
     }
     
     // MARK: - Networking methods
     func getNowPlayingInfo() {
         KexpController.getNowPlayingInfo({ [unowned self] (nowPlaying) -> Void in
-            self.artistNameLabel.text = nowPlaying.artist
-            self.trackNameLabel.text = nowPlaying.songTitle
-            self.albumNameLabel.text = nowPlaying.album
-            
-            if let albumArtUrl =  nowPlaying.albumArtWork {
-                self.updateAlbumArtWork(albumArtUrl)
+            if (nowPlaying.airBreak) {
+                self.artistLabel.hidden = true
+                self.trackLabel.text = "Air Break..."
+                self.albumLabel.hidden = true
+                self.artistNameLabel.hidden = true
+                self.trackNameLabel.hidden = true
+                self.albumNameLabel.hidden = true
+                self.albumArtworkView.image = UIImage.init(named: "vinylPlaceHolder")
+            }
+            else {
+                self.artistLabel.hidden = false
+                self.trackLabel.hidden = false
+                self.albumLabel.hidden = false
+                self.artistNameLabel.hidden = false
+                self.trackNameLabel.hidden = false
+                self.albumNameLabel.hidden = false
+                
+                self.artistNameLabel.text = nowPlaying.artist
+                self.trackNameLabel.text = nowPlaying.songTitle
+                self.albumNameLabel.text = nowPlaying.album
+                
+                if let albumArtUrl =  nowPlaying.albumArtWork {
+                    self.updateAlbumArtWork(albumArtUrl)
+                }
             }
         })
     }

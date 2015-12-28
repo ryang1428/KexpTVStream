@@ -117,10 +117,13 @@
                     </view>
                     <connections>
                         <outlet property="albumArtworkView" destination="miB-S0-IEX" id="7VF-uM-yro"/>
+                        <outlet property="albumLabel" destination="uls-Tc-ZIe" id="KaC-uY-2t6"/>
                         <outlet property="albumNameLabel" destination="fAF-co-ID9" id="yzh-vL-7Hy"/>
+                        <outlet property="artistLabel" destination="IGA-vM-hGu" id="Tbh-e9-IuJ"/>
                         <outlet property="artistNameLabel" destination="gM7-KS-v2Z" id="ILN-UE-MA2"/>
                         <outlet property="kexpLogo" destination="2tg-70-mMt" id="89v-Ff-f7r"/>
                         <outlet property="playPauseButton" destination="COJ-WO-eIn" id="h8D-2Q-Xzd"/>
+                        <outlet property="trackLabel" destination="Kbg-TT-333" id="e1t-As-ulX"/>
                         <outlet property="trackNameLabel" destination="WH0-bT-mBh" id="FHV-hF-gzf"/>
                     </connections>
                 </viewController>
