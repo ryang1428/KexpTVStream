@@ -17,6 +17,7 @@
 		46CDFB461C30A8AD0001A004 /* KexpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB431C30A8AD0001A004 /* KexpController.swift */; };
 		46CDFB471C30A8AD0001A004 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB441C30A8AD0001A004 /* NowPlaying.swift */; };
 		46CDFB491C30B0F30001A004 /* KexpStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB481C30B0F30001A004 /* KexpStyle.swift */; };
+		46CDFB4B1C30D8AC0001A004 /* CurrentDj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDFB4A1C30D8AC0001A004 /* CurrentDj.swift */; };
 		B5DB77680DBF3C0A1A837B2E /* Pods_KexpTVStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842C0B17663603CB9999DE72 /* Pods_KexpTVStream.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		46CDFB431C30A8AD0001A004 /* KexpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KexpController.swift; sourceTree = "<group>"; };
 		46CDFB441C30A8AD0001A004 /* NowPlaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
 		46CDFB481C30B0F30001A004 /* KexpStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KexpStyle.swift; sourceTree = "<group>"; };
+		46CDFB4A1C30D8AC0001A004 /* CurrentDj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDj.swift; sourceTree = "<group>"; };
 		842C0B17663603CB9999DE72 /* Pods_KexpTVStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KexpTVStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4D9AA2AE854CA5681BB5EF /* Pods-KexpTVStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KexpTVStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KexpTVStream/Pods-KexpTVStream.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				46CDFB1F1C30A7170001A004 /* AppDelegate.swift */,
 				46CDFB421C30A8AD0001A004 /* KexpAudioManager.swift */,
 				46CDFB431C30A8AD0001A004 /* KexpController.swift */,
+				46CDFB4A1C30D8AC0001A004 /* CurrentDj.swift */,
 				46CDFB441C30A8AD0001A004 /* NowPlaying.swift */,
 				46CDFB3F1C30A7630001A004 /* KexpNowPlayingVC.swift */,
 				46CDFB481C30B0F30001A004 /* KexpStyle.swift */,
@@ -294,6 +297,7 @@
 				46CDFB461C30A8AD0001A004 /* KexpController.swift in Sources */,
 				46CDFB201C30A7170001A004 /* AppDelegate.swift in Sources */,
 				46CDFB401C30A7630001A004 /* KexpNowPlayingVC.swift in Sources */,
+				46CDFB4B1C30D8AC0001A004 /* CurrentDj.swift in Sources */,
 				46CDFB451C30A8AD0001A004 /* KexpAudioManager.swift in Sources */,
 				46CDFB251C30A7170001A004 /* KexpTVStream.xcdatamodeld in Sources */,
 				46CDFB491C30B0F30001A004 /* KexpStyle.swift in Sources */,

@@ -17,7 +17,8 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
     @IBOutlet var artistLabel: UILabel!
     @IBOutlet var trackLabel: UILabel!
     @IBOutlet var albumLabel: UILabel!
-
+    @IBOutlet var djInfoLabel: UILabel!
+    
     @IBOutlet var artistNameLabel: UILabel!
     @IBOutlet var trackNameLabel: UILabel!
     @IBOutlet var albumNameLabel: UILabel!
@@ -34,7 +35,10 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         self.view.addGestureRecognizer(tapRecognizer)
         
         getNowPlayingInfo()
+        getCurrentDjInfo()
+        
         NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "getCurrentDjInfo", userInfo: nil, repeats: true)
     }
 
     private func updateAlbumArtWork(albumArtUrl: String) {
@@ -82,8 +86,22 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
                 if let albumArtUrl =  nowPlaying.albumArtWork {
                     self.updateAlbumArtWork(albumArtUrl)
                 }
+                else {
+                   self.albumArtworkView.image = UIImage.init(named: "vinylPlaceHolder")
+                }
             }
         })
+    }
+    
+    func getCurrentDjInfo() {
+        KexpController.getDjInfo { [unowned self] (currentDjInfo) -> Void in
+            if let showTitle = currentDjInfo.showTitle, djName = currentDjInfo.djName {
+                self.djInfoLabel.text = "ON NOW: " + showTitle + " with " + djName
+            }
+            else {
+                self.djInfoLabel.text = "ON NOW: UNKNOWN"
+            }
+        }
     }
     
     // MARK: - @IBAction
