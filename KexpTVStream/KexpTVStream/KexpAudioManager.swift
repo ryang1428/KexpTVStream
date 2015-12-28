@@ -1,5 +1,5 @@
 //
-//  AudioManager.swift
+//  KexpAudioManager.swift
 //  KexpTVStream
 //
 //  Created by Dustin Bergman on 12/20/15.
@@ -11,17 +11,23 @@ import AVFoundation
 
 private let kexpStreamUrl = "http://live-aacplus-64.kexp.org/kexp64.aac"
 
-typealias TrackChangeBlock = (nowplaying: NowPlaying) -> Void
 
-class AudioManager: NSObject {
-    static let sharedInstance = AudioManager()
+
+protocol KexpAudioManagerDelegate {
+    func KexpAudioPlayerDidStartPlaying()
+    func KexpAudioPlayerDidStopPlaying()
+}
+
+class KexpAudioManager: NSObject {
+    static let sharedInstance = KexpAudioManager()
     
     //http://www.kexp.org/s/s.aspx?x=3
     //http://www.kexp.org/s/s.aspx?x=5
     
     var audioPlayerItem: AVPlayerItem?
     var audioPlayer: AVPlayer?
-    var currentTrackUpdate: TrackChangeBlock?
+    
+    var delegate: KexpAudioManagerDelegate?
     
     override init() {
         super.init()
@@ -60,38 +66,22 @@ class AudioManager: NSObject {
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
         if let playerItem = object as? AVPlayerItem {
             if (keyPath == "status") {
                 if (playerItem.status == .ReadyToPlay) {
-                    print("Status: Ready to Play")
+                    delegate?.KexpAudioPlayerDidStartPlaying()
                 }
                 else if (playerItem.status == .Failed) {
                     print("Status: Failed to Play")
                     deInitStream()
-                }
-                else if (playerItem.status == .Unknown) {
-                    print("Status: Unknown")
+                    delegate?.KexpAudioPlayerDidStopPlaying()
                 }
             }
             else if (keyPath == "playbackBufferEmpty") {
-                print("playbackBufferEmpty: playbackBufferEmpty")
                 pause()
                 deInitStream()
-            }
-            else if (keyPath == "timedMetadata") {
-                print("timedMetadata: timedMetadata")
-                NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
-
-
+                delegate?.KexpAudioPlayerDidStopPlaying()
             }
         }
-    }
-    
-    func getNowPlayingInfo() {
-        print("printed..")
-        KexpController.getNowPlayingInfo({ [unowned self] (nowplaying) -> Void in
-            self.currentTrackUpdate?(nowplaying: nowplaying)
-        })
     }
 }
