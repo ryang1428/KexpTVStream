@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+typealias TrackChangeBlock = (nowplaying: NowPlaying) -> Void
+
 class KexpController {
 
    class func getNowPlayingInfo(currentTrackUpdate: TrackChangeBlock) {
