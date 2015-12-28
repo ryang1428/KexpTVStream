@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Kexp Now PlayingVC-->
@@ -15,11 +16,122 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="kexp" translatesAutoresizingMaskIntoConstraints="NO" id="2tg-70-mMt">
+                                <rect key="frame" x="77" y="69" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="faZ-Gr-PIl"/>
+                                    <constraint firstAttribute="height" constant="300" id="kqc-Ax-BfA"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinylPlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="miB-S0-IEX">
+                                <rect key="frame" x="77" y="467" width="500" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="lXX-Ff-vw6"/>
+                                    <constraint firstAttribute="width" constant="500" id="yCZ-8C-q2S"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGA-vM-hGu">
+                                <rect key="frame" x="597" y="445" width="1219" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="4Lv-7o-1N9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="theArtist" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="1219" translatesAutoresizingMaskIntoConstraints="NO" id="gM7-KS-v2Z">
+                                <rect key="frame" x="597" y="516" width="1219" height="69"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbg-TT-333">
+                                <rect key="frame" x="597" y="635" width="1219" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="dXv-fQ-iBc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="theTrack" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="1219" translatesAutoresizingMaskIntoConstraints="NO" id="WH0-bT-mBh">
+                                <rect key="frame" x="597" y="706" width="1219" height="69"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uls-Tc-ZIe">
+                                <rect key="frame" x="597" y="825" width="1219" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="1mV-we-9rN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="theAlbum" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="1219" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-co-ID9">
+                                <rect key="frame" x="597" y="896" width="1219" height="69"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COJ-WO-eIn">
+                                <rect key="frame" x="1507" y="69" width="273" height="200"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" image="playButton"/>
+                                <connections>
+                                    <action selector="playKexpAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="OAP-NA-5YQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fAF-co-ID9" secondAttribute="trailing" constant="84" id="0o8-ZW-Edm"/>
+                            <constraint firstItem="uls-Tc-ZIe" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="9a8-Hu-MRn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2tg-70-mMt" secondAttribute="trailing" constant="1523" id="ApW-j6-0Ro"/>
+                            <constraint firstItem="fAF-co-ID9" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="BPK-9S-J4J"/>
+                            <constraint firstItem="uls-Tc-ZIe" firstAttribute="top" secondItem="WH0-bT-mBh" secondAttribute="bottom" constant="50" id="ELq-0g-L0v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uls-Tc-ZIe" secondAttribute="trailing" constant="84" id="HG6-hw-0dU"/>
+                            <constraint firstItem="fAF-co-ID9" firstAttribute="top" secondItem="uls-Tc-ZIe" secondAttribute="bottom" constant="10" id="I8c-CK-XFI"/>
+                            <constraint firstItem="gM7-KS-v2Z" firstAttribute="top" secondItem="IGA-vM-hGu" secondAttribute="bottom" constant="10" id="Jzw-Lh-ksQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gM7-KS-v2Z" secondAttribute="trailing" constant="84" id="L48-sB-lla"/>
+                            <constraint firstItem="IGA-vM-hGu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="577" id="ME5-v9-HjH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="miB-S0-IEX" secondAttribute="bottom" constant="113" id="QId-sh-44k"/>
+                            <constraint firstItem="2tg-70-mMt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="57" id="QiD-HB-oqN"/>
+                            <constraint firstItem="WH0-bT-mBh" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="Qxq-Ci-mDa"/>
+                            <constraint firstItem="IGA-vM-hGu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="577" id="Sir-Vn-qYo"/>
+                            <constraint firstItem="miB-S0-IEX" firstAttribute="top" secondItem="2tg-70-mMt" secondAttribute="bottom" constant="98" id="Sml-iZ-wHA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IGA-vM-hGu" secondAttribute="trailing" constant="84" id="TuZ-CV-X53"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kbg-TT-333" secondAttribute="trailing" constant="84" id="YOm-wa-TuX"/>
+                            <constraint firstItem="Kbg-TT-333" firstAttribute="top" secondItem="gM7-KS-v2Z" secondAttribute="bottom" constant="50" id="Zbm-4W-ouw"/>
+                            <constraint firstItem="miB-S0-IEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="57" id="aeN-1W-hMq"/>
+                            <constraint firstItem="Kbg-TT-333" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="dEc-1l-mv3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WH0-bT-mBh" secondAttribute="trailing" constant="84" id="lp9-Pc-ps5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fAF-co-ID9" secondAttribute="bottom" constant="115" id="nUr-EL-3he"/>
+                            <constraint firstItem="2tg-70-mMt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="69" id="rGj-ng-q74"/>
+                            <constraint firstItem="gM7-KS-v2Z" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="sCb-xW-8ca"/>
+                            <constraint firstItem="WH0-bT-mBh" firstAttribute="top" secondItem="Kbg-TT-333" secondAttribute="bottom" constant="10" id="smT-J4-NQK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="1323" id="uGs-3e-dlf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="albumArtworkView" destination="miB-S0-IEX" id="7VF-uM-yro"/>
+                        <outlet property="albumNameLabel" destination="fAF-co-ID9" id="yzh-vL-7Hy"/>
+                        <outlet property="artistNameLabel" destination="gM7-KS-v2Z" id="ILN-UE-MA2"/>
+                        <outlet property="kexpLogo" destination="2tg-70-mMt" id="89v-Ff-f7r"/>
+                        <outlet property="playPauseButton" destination="COJ-WO-eIn" id="h8D-2Q-Xzd"/>
+                        <outlet property="trackNameLabel" destination="WH0-bT-mBh" id="FHV-hF-gzf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="376" y="334"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="kexp" width="1024" height="1024"/>
+        <image name="playButton" width="144" height="144"/>
+        <image name="vinylPlaceHolder" width="1000" height="1000"/>
+    </resources>
 </document>
