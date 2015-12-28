@@ -11,10 +11,12 @@ import Alamofire
 
 typealias TrackChangeBlock = (nowplaying: NowPlaying) -> Void
 
+private let kexpNowPlayingURL = "http://www.kexp.org/s/s.aspx?x=3"
+
 class KexpController {
 
    class func getNowPlayingInfo(currentTrackUpdate: TrackChangeBlock) {
-        Alamofire.request(.GET, "http://www.kexp.org/s/s.aspx?x=3", parameters: [:])
+        Alamofire.request(.GET, kexpNowPlayingURL, parameters: [:])
             .responseJSON { response in
                 if let nowplayingResponse = response.result.value as? [String:AnyObject] {
                     let nowPlaying = NowPlaying(nowPlayingDictionary: nowplayingResponse)

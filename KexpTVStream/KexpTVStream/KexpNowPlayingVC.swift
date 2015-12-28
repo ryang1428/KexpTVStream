@@ -27,7 +27,7 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         
         KexpAudioManager.sharedInstance.delegate = self
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "playPauseButtonAction:")
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "playKexpAction:")
         tapRecognizer.allowedPressTypes = [NSNumber(integer: UIPressType.PlayPause.rawValue)];
         self.view.addGestureRecognizer(tapRecognizer)
     }
@@ -41,21 +41,10 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         }
     }
     
-    func getNowPlayingInfo() {
-        KexpController.getNowPlayingInfo({ [unowned self] (nowPlaying) -> Void in
-            self.artistNameLabel.text = nowPlaying.artist
-            self.trackNameLabel.text = nowPlaying.songTitle
-            self.albumNameLabel.text = nowPlaying.album
-
-            if let albumArtUrl =  nowPlaying.albumArtWork {
-                self.updateAlbumArtWork(albumArtUrl)
-            }
-        })
-    }
-    
     // MARK: - KexpAudioManagerDelegate Methods
     func KexpAudioPlayerDidStartPlaying() {
         getNowPlayingInfo()
+        
         if (timer == nil) {
             timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
         }
@@ -64,20 +53,37 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
     func KexpAudioPlayerDidStopPlaying() {
         timer?.invalidate()
         timer = nil
+        setPlayMode(false)
+    }
+    
+    // MARK: - Networking methods
+    func getNowPlayingInfo() {
+        KexpController.getNowPlayingInfo({ [unowned self] (nowPlaying) -> Void in
+            self.artistNameLabel.text = nowPlaying.artist
+            self.trackNameLabel.text = nowPlaying.songTitle
+            self.albumNameLabel.text = nowPlaying.album
+            
+            if let albumArtUrl =  nowPlaying.albumArtWork {
+                self.updateAlbumArtWork(albumArtUrl)
+            }
+        })
     }
     
     // MARK: - @IBAction
     @IBAction func playKexpAction(sender: AnyObject) {
-        if (playPauseButton.selected) {
-            playPauseButton.setImage(UIImage(named: "playButton"), forState: .Normal)
-            KexpAudioManager.sharedInstance.pause()
-        }
-        else {
+        (playPauseButton.selected) ? setPlayMode(false) : setPlayMode(true)
+        playPauseButton.selected = !playPauseButton.selected
+    }
+    
+    private func setPlayMode(isPlaying: Bool) {
+        if (isPlaying) {
             playPauseButton.setImage(UIImage(named: "pauseButton"), forState: .Normal)
             KexpAudioManager.sharedInstance.play()
         }
-        
-        playPauseButton.selected = !playPauseButton.selected
+        else {
+            playPauseButton.setImage(UIImage(named: "playButton"), forState: .Normal)
+            KexpAudioManager.sharedInstance.pause()
+        }
     }
     
     // MARK: - VC Styling

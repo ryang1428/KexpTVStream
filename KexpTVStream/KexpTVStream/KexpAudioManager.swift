@@ -11,8 +11,6 @@ import AVFoundation
 
 private let kexpStreamUrl = "http://live-aacplus-64.kexp.org/kexp64.aac"
 
-
-
 protocol KexpAudioManagerDelegate {
     func KexpAudioPlayerDidStartPlaying()
     func KexpAudioPlayerDidStopPlaying()
@@ -20,9 +18,6 @@ protocol KexpAudioManagerDelegate {
 
 class KexpAudioManager: NSObject {
     static let sharedInstance = KexpAudioManager()
-    
-    //http://www.kexp.org/s/s.aspx?x=3
-    //http://www.kexp.org/s/s.aspx?x=5
     
     var audioPlayerItem: AVPlayerItem?
     var audioPlayer: AVPlayer?
