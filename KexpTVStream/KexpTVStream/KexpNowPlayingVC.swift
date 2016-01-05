@@ -18,7 +18,6 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
     @IBOutlet var trackLabel: UILabel!
     @IBOutlet var albumLabel: UILabel!
     @IBOutlet var djInfoLabel: UILabel!
-    @IBOutlet var unofficialLabel: UILabel!
     
     @IBOutlet var artistNameLabel: UILabel!
     @IBOutlet var trackNameLabel: UILabel!
@@ -41,14 +40,6 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         
         NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "getNowPlayingInfo", userInfo: nil, repeats: true)
         NSTimer.scheduledTimerWithTimeInterval(60, target: self, selector: "getCurrentDjInfo", userInfo: nil, repeats: true)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        UIView.animateWithDuration(4.0) { () -> Void in
-            self.unofficialLabel.alpha = 0.7
-        }
     }
 
     private func updateAlbumArtWork(albumArtUrl: String) {
@@ -142,7 +133,5 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         
         albumArtworkView.layer.cornerRadius = 30.0
         albumArtworkView.clipsToBounds = true
-        
-        unofficialLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
     }
 }

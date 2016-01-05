@@ -24,21 +24,6 @@
                                     <constraint firstAttribute="height" constant="300" id="kqc-Ax-BfA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nn4-YV-WHX">
-                                <rect key="frame" x="11" y="178" width="433" height="82"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="UNOFFICIAL">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="72" name="CourierNewPS-BoldMT"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinylPlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="miB-S0-IEX">
                                 <rect key="frame" x="77" y="467" width="500" height="500"/>
                                 <constraints>
@@ -129,11 +114,9 @@
                             <constraint firstItem="Kbg-TT-333" firstAttribute="top" secondItem="gM7-KS-v2Z" secondAttribute="bottom" constant="50" id="Zbm-4W-ouw"/>
                             <constraint firstItem="miB-S0-IEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="57" id="aeN-1W-hMq"/>
                             <constraint firstItem="Kbg-TT-333" firstAttribute="leading" secondItem="miB-S0-IEX" secondAttribute="trailing" constant="20" id="dEc-1l-mv3"/>
-                            <constraint firstItem="nn4-YV-WHX" firstAttribute="centerY" secondItem="2tg-70-mMt" secondAttribute="centerY" id="dKc-xz-scY"/>
                             <constraint firstItem="COJ-WO-eIn" firstAttribute="leading" secondItem="YEu-mZ-qzA" secondAttribute="trailing" constant="78" id="dc7-Iq-wxk"/>
                             <constraint firstItem="YEu-mZ-qzA" firstAttribute="leading" secondItem="2tg-70-mMt" secondAttribute="trailing" constant="44" id="dx4-ct-T0I"/>
                             <constraint firstItem="IGA-vM-hGu" firstAttribute="top" secondItem="COJ-WO-eIn" secondAttribute="bottom" constant="176" id="ewv-tb-cyR"/>
-                            <constraint firstItem="nn4-YV-WHX" firstAttribute="centerX" secondItem="2tg-70-mMt" secondAttribute="centerX" id="iBT-TU-1k0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WH0-bT-mBh" secondAttribute="trailing" constant="84" id="lp9-Pc-ps5"/>
                             <constraint firstItem="YEu-mZ-qzA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="69" id="nTl-KK-m31"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fAF-co-ID9" secondAttribute="bottom" constant="115" id="nUr-EL-3he"/>
@@ -155,7 +138,6 @@
                         <outlet property="playPauseButton" destination="COJ-WO-eIn" id="h8D-2Q-Xzd"/>
                         <outlet property="trackLabel" destination="Kbg-TT-333" id="e1t-As-ulX"/>
                         <outlet property="trackNameLabel" destination="WH0-bT-mBh" id="FHV-hF-gzf"/>
-                        <outlet property="unofficialLabel" destination="nn4-YV-WHX" id="WNt-GR-czF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
