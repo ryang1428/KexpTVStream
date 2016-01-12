@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
+class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var kexpLogo: UIImageView!
@@ -23,6 +23,7 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
     @IBOutlet var trackNameLabel: UILabel!
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var albumArtworkView: UIImageView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,5 +134,23 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate {
         
         albumArtworkView.layer.cornerRadius = 30.0
         albumArtworkView.clipsToBounds = true
+    }
+    
+    // MARK: - UITableView Datasource/Delegate
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: nil)
+        
+        cell.textLabel?.text = "Item \(indexPath.row + 1)"
+        cell.detailTextLabel?.text = "Subtitle \(indexPath.row + 1)"
+        
+        return cell
     }
 }
