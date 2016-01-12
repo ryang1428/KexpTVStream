@@ -22,6 +22,7 @@ class KexpController {
             .responseJSON { response in
                 if let nowplayingResponse = response.result.value as? [String:AnyObject] {
                     let nowPlaying = NowPlaying(nowPlayingDictionary: nowplayingResponse)
+                    print(nowplayingResponse)
                     currentTrackUpdate(nowplaying: nowPlaying)
                 }
         }

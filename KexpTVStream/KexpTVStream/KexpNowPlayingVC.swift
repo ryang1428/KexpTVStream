@@ -25,6 +25,8 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate, UITableViewD
     @IBOutlet var albumArtworkView: UIImageView!
     @IBOutlet var tableView: UITableView!
     
+    var playlistArray = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,33 +65,44 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate, UITableViewD
     
     // MARK: - Networking methods
     func getNowPlayingInfo() {
-        KexpController.getNowPlayingInfo({ [unowned self] (nowPlaying) -> Void in
+        KexpController.getNowPlayingInfo({ [weak self] (nowPlaying) -> Void in
             if (nowPlaying.airBreak) {
-                self.artistLabel.hidden = true
-                self.trackLabel.text = "Air Break..."
-                self.albumLabel.hidden = true
-                self.artistNameLabel.hidden = true
-                self.trackNameLabel.hidden = true
-                self.albumNameLabel.hidden = true
-                self.albumArtworkView.image = UIImage.init(named: "vinylPlaceHolder")
+                self!.artistLabel.hidden = true
+                self!.trackLabel.text = "Air Break..."
+                self!.albumLabel.hidden = true
+                self!.artistNameLabel.hidden = true
+                self!.trackNameLabel.hidden = true
+                self!.albumNameLabel.hidden = true
+                self!.albumArtworkView.image = UIImage.init(named: "vinylPlaceHolder")
             }
             else {
-                self.artistLabel.hidden = false
-                self.trackLabel.hidden = false
-                self.albumLabel.hidden = false
-                self.artistNameLabel.hidden = false
-                self.trackNameLabel.hidden = false
-                self.albumNameLabel.hidden = false
+                self!.artistLabel.hidden = false
+                self!.trackLabel.hidden = false
+                self!.albumLabel.hidden = false
+                self!.artistNameLabel.hidden = false
+                self!.trackNameLabel.hidden = false
+                self!.albumNameLabel.hidden = false
                 
-                self.artistNameLabel.text = nowPlaying.artist
-                self.trackNameLabel.text = nowPlaying.songTitle
-                self.albumNameLabel.text = nowPlaying.album
+                self!.artistNameLabel.text = nowPlaying.artist
+                self!.trackNameLabel.text = nowPlaying.songTitle
+                self!.albumNameLabel.text = nowPlaying.album
                 
                 if let albumArtUrl = nowPlaying.albumArtWork {
-                    self.updateAlbumArtWork(albumArtUrl)
+                    self!.updateAlbumArtWork(albumArtUrl)
                 }
                 else {
-                   self.albumArtworkView.image = UIImage.init(named: "vinylPlaceHolder")
+                   self!.albumArtworkView.image = UIImage(named: "vinylPlaceHolder")
+                }
+                
+                if (self!.playlistArray.count == 0) {
+                    self!.playlistArray.insertObject(nowPlaying, atIndex: 0)
+                    self!.tableView.reloadData()
+                }
+                else if let lastItemAdded = self!.playlistArray[0] as? NowPlaying {
+                    if ((nowPlaying.artist != lastItemAdded.artist) && (nowPlaying.songTitle != lastItemAdded.songTitle)) {
+                        self!.playlistArray.insertObject(nowPlaying, atIndex: 0)
+                        self!.tableView.reloadData()
+                    }
                 }
             }
         })
@@ -138,7 +151,7 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate, UITableViewD
     
     // MARK: - UITableView Datasource/Delegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return playlistArray.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -148,8 +161,10 @@ class KexpNowPlayingVC: UIViewController, KexpAudioManagerDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: nil)
         
-        cell.textLabel?.text = "Item \(indexPath.row + 1)"
-        cell.detailTextLabel?.text = "Subtitle \(indexPath.row + 1)"
+        if let item = playlistArray[indexPath.row] as? NowPlaying {
+            cell.textLabel?.text = item.artist
+            cell.detailTextLabel?.text = item.songTitle
+        }
         
         return cell
     }
